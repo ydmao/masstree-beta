@@ -36,13 +36,13 @@ libjson.a: json.o string.o straccum.o hashallocator.o clp.o kvrandom.o compiler.
 
 KVTREES = masstree.o \
 	value_string.o value_array.o value_versioned_array.o perfstat.o \
-	string_slice.o
+	string_slice.o kvproto.o
 
 mtd: mtd.o log.o checkpoint.o file.o misc.o $(KVTREES) \
 	kvio.o libjson.a
 	$(CXX) $(CFLAGS) -o $@ $^ $(MEMMGR) $(LDFLAGS) $(LIBS)
 
-mtclient: mtclient.o misc.o kvio.o libjson.a
+mtclient: mtclient.o misc.o kvio.o libjson.a kvproto.o
 	$(CXX) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(LIBS)
 
 mttest: mttest.o misc.o checkpoint.o $(KVTREES) \

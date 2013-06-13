@@ -18,25 +18,14 @@
 #include "shared_config.hh"
 
 struct kvproto {
-    int p_rt;
+    rowtype_id p_rt;
     int p_maxkeylen;
     int p_maxrowlen;
 };
 
-inline void kvproto_init(struct kvproto &kvproto) {
-    kvproto.p_rt = KVDB_ROW_TYPE_ID;
-    kvproto.p_maxkeylen = MaxKeyLen;
-    kvproto.p_maxrowlen = MaxRowLen;
-}
-
-inline bool kvproto_check(const kvproto &kvproto) {
-    if (kvproto.p_rt != KVDB_ROW_TYPE_ID ||
-        kvproto.p_maxkeylen != MaxKeyLen ||
-        kvproto.p_maxrowlen != MaxRowLen)
-        return false;
-    return true;
-}
-
+void kvproto_init(struct kvproto &kvproto);
+bool kvproto_check(const kvproto &kvproto);
+   
 enum {
     Cmd_None = 0,
     Cmd_Get,

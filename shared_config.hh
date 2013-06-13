@@ -40,19 +40,15 @@ enum rowtype_id {
 
 #if KVDB_ROW_TYPE_ARRAY
 # define KVDB_ROW_TYPE_INCLUDE "value_array.hh"
-# define KVDB_ROW_TYPE_ID RowType_Array
 typedef value_array row_type;
 #elif KVDB_ROW_TYPE_ARRAY_VER
 # define KVDB_ROW_TYPE_INCLUDE "value_versioned_array.hh"
-# define KVDB_ROW_TYPE_ID RowType_ArrayVer
 typedef value_versioned_array row_type;
 #elif KVDB_ROW_TYPE_BAG
 # define KVDB_ROW_TYPE_INCLUDE "value_bag.hh"
-# define KVDB_ROW_TYPE_ID RowType_Bag
 typedef value_bag<uint16_t> row_type;
 #else
 # define KVDB_ROW_TYPE_INCLUDE "value_string.hh"
-# define KVDB_ROW_TYPE_ID RowType_Str
 typedef value_string row_type;
 #endif
 
