@@ -18,14 +18,17 @@
 #include "shared_config.hh"
 
 struct kvproto {
-    rowtype_id p_rt;
-    int p_maxkeylen;
-    int p_maxrowlen;
+    kvproto() {
+        fill();
+    }
+    void fill();
+    bool check();
+  private:
+    rowtype_id rt_;
+    int maxkeylen_;
+    int maxrowlen_;
 };
 
-void kvproto_init(struct kvproto &kvproto);
-bool kvproto_check(const kvproto &kvproto);
-   
 enum {
     Cmd_None = 0,
     Cmd_Get,

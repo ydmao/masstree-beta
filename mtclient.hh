@@ -296,7 +296,6 @@ class KVConn {
     int partition;
     void handshake() {
         struct kvproto p;
-        kvproto_init(p);
         KVW(out, p);
         kvflush(out);
         bool ok;

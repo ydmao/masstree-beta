@@ -847,7 +847,7 @@ handshake(struct kvin *kvin, struct kvout *kvout, threadinfo *ti, bool &ok)
   struct kvproto kvproto;
   if (KVR(kvin, kvproto) != sizeof(kvproto))
       return -1;
-  ok = kvproto_check(kvproto);
+  ok = kvproto.check();
   KVW(kvout, ok);
   KVW(kvout, ti->ti_index);
   return ok ? 1 : -1;
